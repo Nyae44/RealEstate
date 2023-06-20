@@ -3,4 +3,7 @@
     <string name="profile_picture_content_description">Profile</string>
     <string name="hello_nyae">Hi, Nyae</string>
     <string name="notifications_content_description">Notifications</string>
+    <string name="search_content_description">Search</string>
+    <string name="favorites_content_description">Favorites</string>
+    <string name="message_content_description">Message</string>
 </resources>

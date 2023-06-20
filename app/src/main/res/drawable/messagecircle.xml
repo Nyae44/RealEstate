@@ -6,7 +6,7 @@
     
     <path
         android:strokeWidth="1.5"
-        android:strokeColor="@android:color/black"
+        android:strokeColor="@android:color/transparent"
         android:fillColor="@android:color/transparent"
         android:pathData="M0 0h24v24H0z" />
 

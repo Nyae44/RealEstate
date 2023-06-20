@@ -36,8 +36,8 @@ import com.example.realestate.ui.theme.RealEstateTheme
 fun HomeScreen(modifier: Modifier = Modifier) {
     Surface(modifier = modifier) {
         Scaffold(
-            topBar = {},
-            bottomBar = {},
+            topBar = { TopBarComponents()},
+            bottomBar = { BottomBarComponents()},
             content = {
               Column(modifier = modifier.padding(it)) {
 
@@ -52,16 +52,18 @@ fun TopBarComponents(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = 10.dp,top = 10.dp )
+            .padding(start = 10.dp, top = 10.dp)
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.nyae),
-            contentDescription = stringResource(id = R.string.profile_picture_content_description),
-            contentScale = ContentScale.Crop,
-            modifier = modifier
-                .clip(CircleShape)
-                .size(60.dp)
-        )
+        IconButton(onClick = { /*TODO*/ }) {
+            Image(
+                painter = painterResource(id = R.drawable.nyae),
+                contentDescription = stringResource(id = R.string.profile_picture_content_description),
+                contentScale = ContentScale.Crop,
+                modifier = modifier
+                    .clip(CircleShape)
+                    .size(72.dp)
+            )
+        }
         Spacer(modifier = modifier.width(20.dp))
         Text(
             text = stringResource(id = R.string.hello_nyae),
@@ -83,8 +85,30 @@ fun BottomBarComponents(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-
+        IconButton(onClick = { /*TODO*/ }) {
+            Icon(
+                painter = painterResource(id = R.drawable.search),
+                contentDescription = stringResource(id = R.string.search_content_description)
+            )
+        }
+        IconButton(onClick = { /*TODO*/ }) {
+            Icon(
+                painter = painterResource(id = R.drawable.heart),
+                contentDescription = stringResource(id = R.string.favorites_content_description )
+            )
+        }
+        IconButton(onClick = { /*TODO*/ }) {
+            Icon(
+                painter = painterResource(id = R.drawable.messagecircle),
+                contentDescription = stringResource(id = R.string.message_content_description)
+            )
+        }
+        IconButton(onClick = { /*TODO*/ }) {
+            
+        }
     }
 }
 
@@ -92,6 +116,6 @@ fun BottomBarComponents(modifier: Modifier = Modifier) {
 @Composable
 fun HomeScreenPreview() {
     RealEstateTheme {
-        BottomBarComponents()
+        HomeScreen()
     }
 }
