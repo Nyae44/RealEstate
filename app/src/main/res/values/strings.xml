@@ -6,4 +6,6 @@
     <string name="search_content_description">Search</string>
     <string name="favorites_content_description">Favorites</string>
     <string name="message_content_description">Message</string>
+    <string name="settings_content_description">Settings</string>
+    <string name="maps_content_description">Maps</string>
 </resources>
