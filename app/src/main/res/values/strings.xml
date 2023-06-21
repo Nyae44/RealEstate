@@ -8,4 +8,12 @@
     <string name="message_content_description">Message</string>
     <string name="settings_content_description">Settings</string>
     <string name="maps_content_description">Maps</string>
+    <string name="adjustments_content_description">Adjustments</string>
+    <string name="where_do_you_want_to_go">Where do you want to go?</string>
+    <string name="place_1_hot_deals">Hot deals</string>
+    <string name="place_2_beach_side">Near beach</string>
+    <string name="place_3_countryside">Country side</string>
+    <string name="place_4_forest_side">Forest side</string>
+    <string name="place_5_iconic_cities">Iconic cities</string>
+    <string name="place_6_rural">Rural</string>
 </resources>
