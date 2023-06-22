@@ -9,7 +9,7 @@
     <string name="settings_content_description">Settings</string>
     <string name="maps_content_description">Maps</string>
     <string name="adjustments_content_description">Adjustments</string>
-    <string name="where_do_you_want_to_go">Where do you want to go?</string>
+    <string name="where_do_you_want_to_go">Where do you want to live?</string>
     <string name="place_1_hot_deals">Hot deals</string>
     <string name="place_2_beach_side">Near beach</string>
     <string name="place_3_countryside">Country side</string>
@@ -42,4 +42,6 @@
     <string name="rating_5_house_5">4.6</string>
     <string name="rating_6_house_6">4.4</string>
     <string name="building_content_description">Building</string>
+    <string name="last_visited">Last visited</string>
+    <string name="house_4_kizingo_history">This is a 6 bedroom located at the heart of Mombasa CBD</string>
 </resources>

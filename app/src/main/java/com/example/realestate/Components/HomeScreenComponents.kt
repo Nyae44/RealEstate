@@ -65,6 +65,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                   CategoriesComponentList()
                   BuildingsTitle()
                   BuildingsComponentList()
+                  HistoryTitle()
+                  HistoryComponent()
 
               }
             },
@@ -256,9 +258,14 @@ fun BuildingsComponent(house: House,modifier: Modifier = Modifier) {
             }
         }
         Text(
-            text = stringResource(id = house.name)
+            text = stringResource(id = house.name),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.SemiBold
         )
-        Text(text = stringResource(id = house.price))
+        Text(
+            text = stringResource(id = house.price),
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 
@@ -270,6 +277,55 @@ fun BuildingsComponentList(modifier: Modifier = Modifier) {
     ){
         items(availableBuildings){building ->
             BuildingsComponent(house = building)
+        }
+    }
+}
+
+@Composable
+fun HistoryTitle(modifier: Modifier = Modifier) {
+    Text(
+        text = stringResource(id = R.string.last_visited),
+        style = MaterialTheme.typography.headlineSmall,
+        modifier = modifier
+            .padding(start = 20.dp, top = 10.dp)
+    )
+}
+
+@Composable
+fun HistoryComponent(modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .paddingFromBaseline(bottom = 5.dp)
+            .padding(start = 20.dp, top = 5.dp, bottom = 5.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.house_4_kizingo),
+            contentDescription = stringResource(id = R.string.building_content_description),
+            contentScale = ContentScale.Crop,
+            modifier = modifier
+                .size(150.dp)
+                .clip(shape = RoundedCornerShape(10.dp))
+        )
+        Column(
+            modifier = modifier
+                .padding(end = 5.dp)
+        ) {
+        Text(
+            text = stringResource(id = R.string.house_4_kizingo),
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.SemiBold
+        )
+            Text(
+                text = stringResource(id = R.string.house_4_kizingo_history),
+                style = MaterialTheme.typography.bodySmall
+            )
+            Text(
+                text = stringResource(id = R.string.price_4_house_4),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold
+            )
         }
     }
 }
