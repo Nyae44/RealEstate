@@ -33,11 +33,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -46,7 +46,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.realestate.R
+import com.example.realestate.data.FakePlacesDatabase.availableBuildings
 import com.example.realestate.data.FakePlacesDatabase.placeCategory
+import com.example.realestate.model.House
 import com.example.realestate.model.Place
 import com.example.realestate.ui.theme.RealEstateTheme
 
@@ -61,6 +63,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
               Column(modifier = modifier.padding(it)) {
                   SearchComponent()
                   CategoriesComponentList()
+                  BuildingsTitle()
+                  BuildingsComponentList()
+
               }
             },
             )
@@ -142,8 +147,6 @@ fun SearchComponent(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .paddingFromBaseline(top = 40.dp)
-            .background(color = Color(0xF8F8FF))
-            .clip(shape = RoundedCornerShape(15.dp))
     ){
        Row(
            modifier = modifier
@@ -154,7 +157,9 @@ fun SearchComponent(modifier: Modifier = Modifier) {
        ) {
            OutlinedTextField(
                value = textState,
-               onValueChange ={it},
+               onValueChange ={
+                   textState = it
+               },
                trailingIcon = {
 
                    IconButton(onClick = { /*TODO*/ }) {
@@ -176,7 +181,7 @@ fun SearchComponent(modifier: Modifier = Modifier) {
                            contentDescription = stringResource(id = R.string.maps_content_description)
                        )
                    }
-               }
+               },
            )
        }
     }
@@ -199,7 +204,7 @@ fun CategoriesComponent(place: Place,modifier: Modifier = Modifier) {
                text = stringResource(id = place.name),
                style = MaterialTheme.typography.titleSmall,
                fontWeight = FontWeight.W600,
-               fontStyle = FontStyle.Italic
+               fontStyle = FontStyle.Italic,
 
            )
        }
@@ -208,9 +213,63 @@ fun CategoriesComponent(place: Place,modifier: Modifier = Modifier) {
 
 @Composable
 fun CategoriesComponentList(modifier: Modifier = Modifier) {
-    LazyRow(contentPadding = PaddingValues(horizontal = 30.dp)){
+    LazyRow(
+        contentPadding = PaddingValues(horizontal = 30.dp),
+        modifier =  modifier
+        ){
         items(placeCategory){category->
             CategoriesComponent(place = category)
+        }
+    }
+}
+
+@Composable
+fun BuildingsTitle(modifier: Modifier = Modifier) {
+    Text(
+        text = stringResource(id = R.string.buildings_with_history),
+        style = MaterialTheme.typography.headlineSmall,
+        modifier = modifier.padding(start = 20.dp, top = 20.dp),
+
+    )
+}
+
+@Composable
+fun BuildingsComponent(house: House,modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .padding(start = 15.dp, top = 10.dp)
+    ) {
+        Box(modifier = modifier){
+            Image(
+                painter = painterResource(id = house.image), 
+                contentDescription = stringResource(id = R.string.building_content_description),
+                contentScale = ContentScale.Crop,
+                modifier = modifier.size(200.dp)
+            )
+            Column(modifier = modifier.align(Alignment.BottomStart)) {
+                Text(
+                    text = stringResource(id = house.size),
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = modifier
+                )
+            }
+        }
+        Text(
+            text = stringResource(id = house.name)
+        )
+        Text(text = stringResource(id = house.price))
+    }
+}
+
+@Composable
+fun BuildingsComponentList(modifier: Modifier = Modifier) {
+    LazyRow(
+        modifier = modifier,
+        contentPadding = PaddingValues(horizontal = 10.dp)
+    ){
+        items(availableBuildings){building ->
+            BuildingsComponent(house = building)
         }
     }
 }
