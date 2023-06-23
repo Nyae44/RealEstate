@@ -44,4 +44,13 @@
     <string name="building_content_description">Building</string>
     <string name="last_visited">Last visited</string>
     <string name="house_4_kizingo_history">This is a 6 bedroom located at the heart of Mombasa CBD</string>
+    <string name="search">Search</string>
+    <string name="upload_content_description">Upload</string>
+    <string name="favorite_content_description">Favorites</string>
+    <string name="arrow_back_content_description">Arrow back</string>
+    <string name="house_6_shanzu_content_description">Shanzu</string>
+    <string name="rating">Rating</string>
+    <string name="book">Book</string>
+    <string name="virtual_tour">VIRTUAL TOUR</string>
+    <string name="virtual_tour_content_description">Virtual tour</string>
 </resources>

@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.realestate.Components
+package com.example.realestate.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
