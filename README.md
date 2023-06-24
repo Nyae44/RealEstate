@@ -15,7 +15,7 @@ Android, Kotlin, Jetpack Compose
 
 <br />
 
-## DarkMode ![img.png](img.png)
+## DarkMode 🌚
 ![](https://github.com/Nyae44/RealEstate/blob/master/Screenshots/RealEstateDarkTheme.png)
 ![](https://github.com/Nyae44/RealEstate/blob/master/Screenshots/searchScreendarkmode.png) 
 
