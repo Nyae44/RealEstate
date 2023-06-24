@@ -8,16 +8,15 @@ A real estate app built with Jetpack Compose
 
 Android, Kotlin, Jetpack Compose
 <br />
-## LightMode
+## LightMode 🌞
 ![](https://github.com/Nyae44/RealEstate/blob/master/Screenshots/RealEstateLightTheme.png)
 ![](https://github.com/Nyae44/RealEstate/blob/master/Screenshots/searchScreenlightmode.png)
 <br />
 
 <br />
 
-## DarkMode 🌞
-![](https://github.com/Nyae44/RealEstate/blob/master/Screenshots/RealEstateDarkTheme.png) 
-
+## DarkMode ![img.png](img.png)
+![](https://github.com/Nyae44/RealEstate/blob/master/Screenshots/RealEstateDarkTheme.png)
 ![](https://github.com/Nyae44/RealEstate/blob/master/Screenshots/searchScreendarkmode.png) 
 
 <br />
