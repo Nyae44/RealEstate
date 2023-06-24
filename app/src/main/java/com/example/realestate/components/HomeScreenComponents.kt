@@ -4,12 +4,16 @@ package com.example.realestate.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,8 +22,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -45,29 +51,36 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.realestate.R
 import com.example.realestate.data.FakePlacesDatabase.availableBuildings
 import com.example.realestate.data.FakePlacesDatabase.placeCategory
 import com.example.realestate.model.House
 import com.example.realestate.model.Place
+import com.example.realestate.navigation.Screen
 import com.example.realestate.ui.theme.RealEstateTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
-    Surface(modifier = modifier) {
+    val scrollState = rememberScrollState()
+    Surface(modifier = modifier.fillMaxHeight()) {
         Scaffold(
             topBar = { TopBarComponents()},
-            bottomBar = { BottomBarComponents()},
+            bottomBar = { BottomBarComponents(navController = rememberNavController())},
             content = {
-              Column(modifier = modifier.padding(it)) {
+              Column(
+                  modifier = modifier
+                      .padding(it)
+                      .verticalScroll(scrollState)
+              ) {
                   SearchComponent()
                   CategoriesComponentList()
                   BuildingsTitle()
                   BuildingsComponentList()
                   HistoryTitle()
                   HistoryComponent()
-
               }
             },
             )
@@ -108,7 +121,9 @@ fun TopBarComponents(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BottomBarComponents(modifier: Modifier = Modifier) {
+fun BottomBarComponents(
+    navController: NavController,
+    modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -121,7 +136,7 @@ fun BottomBarComponents(modifier: Modifier = Modifier) {
                 contentDescription = stringResource(id = R.string.search_content_description)
             )
         }
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = { navController.navigate(route = Screen.Search.route) }) {
             Icon(
                 painter = painterResource(id = R.drawable.heart),
                 contentDescription = stringResource(id = R.string.favorites_content_description )
@@ -297,7 +312,7 @@ fun HistoryComponent(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .paddingFromBaseline(bottom = 5.dp)
-            .padding(start = 20.dp, top = 5.dp, bottom = 5.dp),
+            .padding(start = 20.dp, top = 5.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Image(
