@@ -1,5 +1,6 @@
 package com.example.realestate.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -171,6 +172,8 @@ fun ProceedComponent(modifier: Modifier = Modifier) {
         }
     }
 }
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun SearchScreenPreview() {

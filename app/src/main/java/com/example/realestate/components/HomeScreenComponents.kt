@@ -264,6 +264,7 @@ fun BuildingsComponent(house: House,modifier: Modifier = Modifier) {
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.SemiBold,
                     modifier = modifier
+                        .background(color = Color.White)
                 )
             }
         }
