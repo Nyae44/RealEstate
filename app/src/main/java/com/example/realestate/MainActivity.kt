@@ -10,14 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.realestate.navigation.SetupNavGraph
-import com.example.realestate.ui.theme.RealEstateTheme
+import com.example.realestate.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     lateinit var navController:NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            RealEstateTheme {
+            AppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),

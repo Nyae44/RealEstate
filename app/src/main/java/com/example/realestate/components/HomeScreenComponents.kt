@@ -2,11 +2,9 @@
 
 package com.example.realestate.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.rememberScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -59,7 +57,8 @@ import com.example.realestate.data.FakePlacesDatabase.placeCategory
 import com.example.realestate.model.House
 import com.example.realestate.model.Place
 import com.example.realestate.navigation.Screen
-import com.example.realestate.ui.theme.RealEstateTheme
+import com.example.realestate.ui.theme.AppTheme
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -161,10 +160,6 @@ fun BottomBarComponents(
 @Composable
 fun SearchComponent(modifier: Modifier = Modifier) {
     var textState by remember { mutableStateOf("") }
-    Box(
-        modifier = modifier
-            .paddingFromBaseline(top = 40.dp)
-    ){
        Row(
            modifier = modifier
                .fillMaxWidth()
@@ -202,7 +197,6 @@ fun SearchComponent(modifier: Modifier = Modifier) {
            )
        }
     }
-}
 
 @Composable
 fun CategoriesComponent(place: Place,modifier: Modifier = Modifier) {
@@ -215,6 +209,7 @@ fun CategoriesComponent(place: Place,modifier: Modifier = Modifier) {
                modifier = modifier
                    .size(60.dp)
                    .shadow(elevation = 10.dp, shape = RoundedCornerShape(10.dp))
+                   .background(Color.White)
            )
            Spacer(modifier = modifier.height(10.dp))
            Text(
@@ -344,10 +339,11 @@ fun HistoryComponent(modifier: Modifier = Modifier) {
         }
     }
 }
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun HomeScreenPreview() {
-    RealEstateTheme {
+    AppTheme {
         HomeScreen()
     }
 }
